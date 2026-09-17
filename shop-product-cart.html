@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Rudraksha — Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #1C1917; --maroon: #8C1D2F; --maroon-dark: #6E1524;
+  --gold: #B8923F; --gold-light: #D9C08A; --cream: #FAF6EF; --paper: #FFFFFF;
+  --muted: #78716C; --line: #E9E1D2; --green: #3E6B4F; --red: #A3402F;
+  --shadow-sm: 0 2px 10px rgba(28,25,23,0.06); --shadow-md: 0 10px 34px rgba(28,25,23,0.10); --shadow-lg: 0 24px 60px rgba(28,25,23,0.16);
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; }
+a { text-decoration: none; color: inherit; }
+button { font-family: 'Inter', sans-serif; }
+img { display: block; }
+
+/* ===== SALE BAR ===== */
+.sale-bar { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; background: linear-gradient(90deg, var(--gold), #caa557); color: #1C1917; padding: 10px 16px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+.sale-bar .sale-flash { background: #1C1917; color: var(--gold-light); padding: 3px 10px; border-radius: 4px; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+.sale-bar .sale-timer { font-variant-numeric: tabular-nums; background: #1C1917; color: #fff; padding: 3px 10px; border-radius: 6px; font-weight: 700; }
+
+/* ===== NAVBAR ===== */
+.navbar { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 0 rgba(28,25,23,0.03); }
+.nav-inner { max-width: 1320px; margin: 0 auto; padding: 0 28px; height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.nav-brand { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.nav-om { font-family: serif; font-size: 26px; color: var(--gold); }
+.nav-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; letter-spacing: 0.5px; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-app { display: flex; align-items: center; gap: 8px; background: var(--ink); color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; transition: background .2s; }
+.nav-app svg { width: 15px; height: 15px; stroke: var(--gold-light); }
+.nav-app:hover { background: #000; }
+.nav-user { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: var(--cream); border: 1px solid var(--line); border-radius: 24px; font-size: 13px; color: #44403C; }
+.nav-user svg { width: 15px; height: 15px; stroke: var(--gold); }
+.cart-btn { position: relative; background: none; border: 1px solid var(--line); border-radius: 10px; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
+.cart-btn svg { width: 20px; height: 20px; stroke: var(--ink); }
+.cart-btn:hover { border-color: var(--gold); background: #fff; }
+.cart-count { position: absolute; top: -6px; right: -6px; background: var(--maroon); color: #fff; font-size: 11px; font-weight: 600; min-width: 20px; height: 20px; border-radius: 10px; display: flex; align-items: center; justify-content: center; padding: 0 5px; }
+.logout-btn { background: none; border: 1px solid var(--line); color: #57534E; padding: 9px 16px; border-radius: 8px; font-size: 13px; cursor: pointer; transition: border-color .2s, color .2s; }
+.logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+/* ===== VIEWS ===== */
+.view { display: none; flex: 1; }
+.view.active { display: block; animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== HERO ===== */
+.hero { background: linear-gradient(135deg, #2A1013 0%, #4A1420 55%, #6E1524 100%); color: #fff; padding: 90px 28px 96px; text-align: center; position: relative; overflow: hidden; }
+.hero::before { content: 'ॐ'; position: absolute; font-family: serif; font-size: 480px; color: rgba(217,192,138,0.045); top: 50%; left: 50%; transform: translate(-50%,-52%); pointer-events: none; }
+.hero-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; }
+.hero-eyebrow { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px; }
+.hero h1 { font-size: 52px; font-weight: 600; line-height: 1.12; letter-spacing: 0.5px; margin-bottom: 18px; }
+.hero h1 em { font-style: italic; color: var(--gold-light); }
+.hero p { font-size: 17px; color: rgba(255,255,255,0.72); font-weight: 300; margin-bottom: 34px; }
+.hero-features { display: flex; justify-content: center; gap: 34px; flex-wrap: wrap; margin-bottom: 38px; }
+.hf { display: flex; align-items: center; gap: 9px; font-size: 14px; color: rgba(255,255,255,0.85); }
+.hf svg { width: 16px; height: 16px; stroke: var(--gold-light); }
+.hero-app { display: inline-flex; align-items: center; gap: 14px; border: 1px solid rgba(217,192,138,0.35); border-radius: 12px; padding: 15px 22px; cursor: pointer; transition: background .2s, border-color .2s; background: rgba(255,255,255,0.04); }
+.hero-app:hover { background: rgba(255,255,255,0.08); border-color: var(--gold-light); }
+.hero-app-icon { width: 40px; height: 40px; border-radius: 9px; background: var(--gold); display: flex; align-items: center; justify-content: center; }
+.hero-app-icon svg { width: 19px; height: 19px; stroke: #2A1013; }
+.hero-app-text { text-align: left; }
+.hero-app-text h4 { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; }
+.hero-app-text p { font-size: 12px; color: rgba(255,255,255,0.65); margin: 2px 0 0; }
+.hero-app-text span { font-size: 11px; color: var(--gold-light); font-weight: 500; }
+
+/* ===== SECTION ===== */
+.section { max-width: 1320px; margin: 0 auto; padding: 70px 28px; }
+.section-head { text-align: center; margin-bottom: 52px; }
+.section-head .eyebrow { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.section-head h2 { font-size: 40px; font-weight: 600; position: relative; display: inline-block; padding-bottom: 16px; }
+.section-head h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 64px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.section-head p { color: var(--muted); font-size: 16px; margin-top: 18px; font-weight: 300; }
+
+/* ===== PRODUCT GRID ===== */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 28px; }
+.card-p { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer; transition: transform .25s, box-shadow .25s, border-color .25s; }
+.card-p:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: var(--gold-light); }
+.card-img { position: relative; aspect-ratio: 1; overflow: hidden; background: linear-gradient(135deg, var(--cream), #F1E8D6); }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.card-p:hover .card-img img { transform: scale(1.06); }
+.badge { position: absolute; top: 14px; left: 14px; background: rgba(28,25,23,0.82); color: var(--gold-light); font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 11px; border-radius: 4px; backdrop-filter: blur(4px); }
+.sale-pill { position: absolute; top: 14px; right: 14px; background: var(--gold); color: #1C1917; font-size: 11px; font-weight: 700; letter-spacing: 1px; padding: 6px 11px; border-radius: 4px; }
+.card-body { padding: 20px 20px 22px; }
+.card-cat { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+.card-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--ink); min-height: 50px; line-height: 1.3; margin-bottom: 14px; }
+.card-foot { display: flex; align-items: center; justify-content: space-between; }
+.price-block .now { font-size: 19px; font-weight: 600; color: var(--maroon); }
+.price-block .was { font-size: 13px; color: #A8A29E; text-decoration: line-through; margin-left: 7px; }
+.view-link { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--maroon); border: none; background: none; cursor: pointer; }
+.view-link svg { width: 14px; height: 14px; stroke: var(--maroon); transition: transform .2s; }
+.card-p:hover .view-link svg { transform: translateX(3px); }
+
+/* ===== PRODUCT DETAIL ===== */
+.pd-wrap { max-width: 1180px; margin: 48px auto; padding: 0 28px; }
+.back-btn { display: inline-flex; align-items: center; gap: 9px; background: none; border: 1px solid var(--line); color: #57534E; padding: 10px 18px; border-radius: 8px; font-size: 13px; cursor: pointer; margin-bottom: 26px; transition: border-color .2s, color .2s; }
+.back-btn svg { width: 15px; height: 15px; stroke: currentColor; }
+.back-btn:hover { border-color: var(--gold); color: var(--maroon); }
+.pd { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 38px; box-shadow: var(--shadow-sm); }
+.pd-img { border-radius: 14px; overflow: hidden; background: linear-gradient(135deg, var(--cream), #F1E8D6); aspect-ratio: 1; }
+.pd-img img { width: 100%; height: 100%; object-fit: cover; }
+.pd-cat { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.pd-title { font-size: 36px; font-weight: 600; line-height: 1.15; margin-bottom: 14px; }
+.pd-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.stars { display: flex; gap: 2px; }
+.stars svg { width: 16px; height: 16px; fill: var(--gold); }
+.pd-rating span { font-size: 13px; color: var(--muted); }
+.pd-sale-note { color: var(--red); font-size: 13px; font-weight: 600; margin-bottom: 16px; }
+.pd-sale-note b { font-variant-numeric: tabular-nums; }
+.pd-price { display: flex; align-items: baseline; gap: 14px; padding: 16px 18px; background: var(--cream); border: 1px solid var(--line); border-radius: 11px; margin-bottom: 22px; }
+.pd-price .now { font-size: 30px; font-weight: 600; color: var(--maroon); }
+.pd-price .was { font-size: 17px; color: #A8A29E; text-decoration: line-through; }
+.pd-price .off { font-size: 12px; font-weight: 600; color: var(--green); background: rgba(62,107,79,0.10); padding: 4px 9px; border-radius: 20px; }
+.pd-desc { color: #57534E; font-size: 15px; line-height: 1.75; margin-bottom: 24px; }
+.pd-feats h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--ink); margin-bottom: 12px; }
+.pd-feats ul { list-style: none; margin-bottom: 26px; }
+.pd-feats li { position: relative; padding: 5px 0 5px 24px; color: #57534E; font-size: 14px; }
+.pd-feats li::before { content: ''; position: absolute; left: 4px; top: 13px; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+.qty-row { display: flex; align-items: center; gap: 16px; margin-bottom: 26px; }
+.qty-row label { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; color: var(--ink); }
+.qty-ctl { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; }
+.qty-ctl button { width: 38px; height: 40px; background: var(--cream); border: none; cursor: pointer; font-size: 18px; color: var(--maroon); display: flex; align-items: center; justify-content: center; transition: background .2s; }
+.qty-ctl button:hover { background: var(--gold-light); }
+.qty-ctl input { width: 48px; text-align: center; border: none; font-size: 15px; font-weight: 600; padding: 10px 0; }
+.qty-ctl input:focus { outline: none; }
+.pd-actions { display: flex; gap: 14px; }
+.btn-cart, .btn-buy { flex: 1; padding: 15px; border-radius: 9px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px; transition: all .2s; }
+.btn-cart svg, .btn-buy svg { width: 17px; height: 17px; }
+.btn-cart { background: #fff; color: var(--maroon); border: 1.5px solid var(--maroon); }
+.btn-cart svg { stroke: var(--maroon); }
+.btn-cart:hover { background: var(--maroon); color: #fff; }
+.btn-cart:hover svg { stroke: #fff; }
+.btn-buy { background: var(--maroon); color: #fff; border: 1.5px solid var(--maroon); }
+.btn-buy svg { stroke: #fff; }
+.btn-buy:hover { background: var(--maroon-dark); border-color: var(--maroon-dark); box-shadow: 0 8px 22px rgba(140,29,47,0.3); }
+
+/* ===== CART ===== */
+.cart-wrap { max-width: 1180px; margin: 48px auto; padding: 0 28px; }
+.cart-title { font-size: 38px; font-weight: 600; text-align: center; margin-bottom: 8px; }
+.cart-sub { text-align: center; color: var(--muted); font-size: 15px; margin-bottom: 42px; }
+.cart-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 30px; align-items: start; }
+.cart-items { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 8px 24px; }
+.c-item { display: flex; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.c-item:last-child { border-bottom: none; }
+.c-img { width: 84px; height: 84px; border-radius: 10px; overflow: hidden; background: var(--cream); flex-shrink: 0; }
+.c-img img { width: 100%; height: 100%; object-fit: cover; }
+.c-info { flex: 1; }
+.c-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.c-price { color: var(--maroon); font-weight: 600; font-size: 16px; margin-bottom: 12px; }
+.c-controls { display: flex; align-items: center; gap: 14px; }
+.c-qty { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.c-qty button { width: 30px; height: 30px; background: var(--cream); border: none; cursor: pointer; color: var(--maroon); font-size: 15px; display: flex; align-items: center; justify-content: center; }
+.c-qty button:hover { background: var(--gold-light); }
+.c-qty span { min-width: 30px; text-align: center; font-weight: 600; font-size: 14px; }
+.c-remove { background: none; border: none; color: var(--red); font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+.c-remove svg { width: 13px; height: 13px; stroke: var(--red); }
+.c-remove:hover { text-decoration: underline; }
+.empty-cart { text-align: center; padding: 70px 20px; color: var(--muted); }
+.empty-cart .big { font-size: 44px; margin-bottom: 16px; color: var(--line); }
+.empty-cart p { font-size: 16px; margin-bottom: 22px; }
+.cart-summary { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px; position: sticky; top: 96px; }
+.cart-summary h3 { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.s-row { display: flex; justify-content: space-between; padding: 9px 0; font-size: 14px; color: #57534E; }
+.s-row .free { color: var(--green); font-weight: 500; }
+.s-total { display: flex; justify-content: space-between; align-items: center; padding: 18px 0 0; margin-top: 12px; border-top: 2px solid var(--gold-light); }
+.s-total span:first-child { font-size: 15px; font-weight: 600; }
+.s-total .amt { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: var(--maroon); }
+.btn-checkout { width: 100%; margin-top: 22px; padding: 15px; background: var(--maroon); color: #fff; border: none; border-radius: 9px; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px; transition: background .2s; }
+.btn-checkout svg { width: 16px; height: 16px; stroke: #fff; }
+.btn-checkout:hover { background: var(--maroon-dark); }
+.continue { display: block; text-align: center; margin-top: 16px; color: var(--muted); font-size: 13px; cursor: pointer; }
+.continue:hover { color: var(--maroon); }
+
+/* ===== FLOATING APP ===== */
+.float-app { position: fixed; bottom: 26px; right: 26px; z-index: 90; background: var(--ink); color: #fff; border: none; padding: 13px 20px; border-radius: 40px; cursor: pointer; display: flex; align-items: center; gap: 11px; box-shadow: 0 12px 32px rgba(28,25,23,0.30); transition: transform .2s, box-shadow .2s; }
+.float-app:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(28,25,23,0.36); }
+.float-app .ico { width: 30px; height: 30px; border-radius: 8px; background: var(--gold); display: flex; align-items: center; justify-content: center; }
+.float-app .ico svg { width: 15px; height: 15px; stroke: #1C1917; }
+.float-app .txt { text-align: left; }
+.float-app .txt span { display: block; font-size: 12px; font-weight: 600; }
+.float-app .txt small { font-size: 10px; color: var(--gold-light); }
+
+/* ===== FOOTER ===== */
+.footer { background: #1C1917; color: #fff; padding: 60px 28px 26px; margin-top: 70px; }
+.footer-grid { max-width: 1180px; margin: 0 auto 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 40px; }
+.footer h4 { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+.footer p { color: #A8A29E; font-size: 14px; margin-bottom: 8px; font-weight: 300; }
+.footer-bottom { max-width: 1180px; margin: 0 auto; padding-top: 24px; border-top: 1px solid #33302B; text-align: center; color: #78716C; font-size: 13px; }
+
+/* ===== TOAST / MODAL ===== */
+.toast { position: fixed; bottom: 100px; right: 28px; background: var(--ink); color: #fff; padding: 14px 22px; border-radius: 10px; font-size: 14px; box-shadow: 0 12px 32px rgba(0,0,0,0.25); z-index: 999; animation: rise .3s ease; }
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-overlay { position: fixed; inset: 0; background: rgba(28,25,23,0.6); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; animation: fade .25s ease; }
+.modal-box { background: #fff; border-radius: 18px; padding: 44px; max-width: 440px; width: 100%; text-align: center; box-shadow: var(--shadow-lg); }
+.modal-ico { width: 72px; height: 72px; margin: 0 auto 22px; border-radius: 18px; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+.modal-ico svg { width: 32px; height: 32px; stroke: var(--gold-light); }
+.modal-box h3 { font-size: 26px; font-weight: 600; margin-bottom: 12px; }
+.modal-box p { color: #57534E; font-size: 15px; line-height: 1.6; margin-bottom: 10px; }
+.modal-note { font-size: 13px; color: var(--gold); font-weight: 600; margin-bottom: 26px; }
+.modal-btn { width: 100%; padding: 15px; border-radius: 9px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 9px; transition: all .2s; margin-bottom: 10px; }
+.modal-btn svg { width: 16px; height: 16px; }
+.modal-btn.primary { background: var(--maroon); color: #fff; border: none; }
+.modal-btn.primary svg { stroke: #fff; }
+.modal-btn.primary:hover { background: var(--maroon-dark); }
+.modal-btn.ghost { background: #fff; color: #57534E; border: 1px solid var(--line); }
+.modal-btn.ghost:hover { border-color: #A8A29E; }
+
+@media (max-width: 900px) { .pd { grid-template-columns: 1fr; gap: 30px; } .cart-grid { grid-template-columns: 1fr; } .cart-summary { position: static; } }
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; } .section-head h2 { font-size: 30px; }
+  .nav-user { display: none; } .nav-name { font-size: 18px; }
+  .pd-title { font-size: 28px; } .pd-actions { flex-direction: column; }
+  .float-app .txt { display: none; } .float-app { padding: 13px; border-radius: 50%; }
+}
+</style>
+</head>
+<body>
+
+<!-- FLASH SALE BAR (48h looping) -->
+<div class="sale-bar" id="saleBar">
+  <span class="sale-flash">Flash Sale</span>
+  <span><strong id="salePercentLabel">60% OFF</strong> sitewide — offer resets in</span>
+  <span class="sale-timer" id="saleCountdown">48:00:00</span>
+</div>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <div class="nav-brand" onclick="navigateTo('shop')">
+      <span class="nav-om">ॐ</span>
+      <span class="nav-name">Divine Rudraksha</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-app" onclick="downloadApp()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        Get App
+      </button>
+      <div class="nav-user">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        <span id="userName">Guest</span>
+      </div>
+      <button class="cart-btn" onclick="navigateTo('cart')" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13h-15L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<!-- SHOP -->
+<div id="shopView" class="view active">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Authentic &bull; Mantra Charged &bull; Lab Certified</div>
+      <h1>Awaken Your <em>Divine Energy</em></h1>
+      <p>Authentic Rudraksha malas and sacred spiritual treasures, sourced directly from the Himalayas.</p>
+      <div class="hero-features">
+        <div class="hf"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/></svg>Lab Certified</div>
+        <div class="hf"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>Mantra Charged</div>
+        <div class="hf"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"/><circle cx="7" cy="17" r="1.6"/><circle cx="17" cy="17" r="1.6"/></svg>Free Shipping</div>
+      </div>
+      <div class="hero-app" onclick="downloadApp()">
+        <div class="hero-app-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></div>
+        <div class="hero-app-text">
+          <h4>Order from Our Official App</h4>
+          <p>Exclusive offers &amp; faster checkout</p>
+          <span>Available for Android</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">The Collection</div>
+      <h2>Our Sacred Collection</h2>
+      <p>Handpicked divine treasures for your spiritual journey.</p>
+    </div>
+    <div class="grid" id="productsGrid"></div>
+  </section>
+</div>
+
+<!-- PRODUCT -->
+<div id="productView" class="view">
+  <div class="pd-wrap">
+    <button class="back-btn" onclick="navigateTo('shop')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      Back to Collection
+    </button>
+    <div class="pd">
+      <div class="pd-img"><img id="productImage" src="" alt="Product"></div>
+      <div>
+        <div class="pd-cat" id="productCategory"></div>
+        <h1 class="pd-title" id="productTitle"></h1>
+        <div class="pd-rating">
+          <div class="stars" id="starsRow"></div>
+          <span>(128 reviews)</span>
+        </div>
+        <p class="pd-sale-note" id="pdSaleNote">Flash-sale price — offer resets in <b id="pdCountdown">48:00:00</b></p>
+        <div class="pd-price">
+          <span class="now" id="productPrice"></span>
+          <span class="was" id="productOriginal"></span>
+          <span class="off" id="productDiscount"></span>
+        </div>
+        <p class="pd-desc" id="productDescription"></p>
+        <div class="pd-feats">
+          <h4>Key Benefits</h4>
+          <ul id="productBenefits"></ul>
+        </div>
+        <div class="qty-row">
+          <label>Quantity</label>
+          <div class="qty-ctl">
+            <button onclick="changeQty(-1)">−</button>
+            <input type="number" id="quantity" value="1" min="1" max="10">
+            <button onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+        <div class="pd-actions">
+          <button class="btn-cart" onclick="addToCart()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1.5 13h-15L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+            Add to Cart
+          </button>
+          <button class="btn-buy" onclick="buyNow()">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            Buy Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div id="cartView" class="view">
+  <div class="cart-wrap">
+    <h1 class="cart-title">Your Cart</h1>
+    <p class="cart-sub">Review your selection before proceeding.</p>
+    <div class="cart-grid">
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-summary">
+        <h3>Order Summary</h3>
+        <div class="s-row"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="s-row"><span>Shipping</span><span class="free">Free</span></div>
+        <div class="s-total"><span>Total</span><span class="amt" id="totalAmount">₹0</span></div>
+        <button class="btn-checkout" onclick="goToCheckout()">
+          Proceed to Checkout
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <a class="continue" onclick="navigateTo('shop')">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="float-app" onclick="downloadApp()">
+  <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></span>
+  <span class="txt"><span>Download App</span><small>For Android</small></span>
+</button>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Divine Rudraksha</h4>
+      <p>Bringing authentic spiritual products from the Himalayas to your doorstep.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>info@divinerudraksha.com</p>
+    </div>
+    <div>
+      <h4>Our App</h4>
+      <p>Divine Rudraksha App</p>
+      <p>Available for Android devices</p>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Divine Rudraksha. All rights reserved.</div>
+</footer>
+
+<script src="telegram-config.js"></script>
+<script src="telegram-service.js"></script>
+<script>
+// ===== ICONS =====
+const STAR = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+
+// ===== FLASH SALE (48-HOUR LOOP) =====
+const SALE = {
+  active: true,
+  percent: 60,
+  cycleHours: 48,
+  anchorISO: "2026-09-15T00:00:00"
+};
+function saleCycle() {
+  const cycleMs = SALE.cycleHours * 3600 * 1000;
+  const anchor = new Date(SALE.anchorISO).getTime();
+  const now = Date.now();
+  const idx = Math.floor((now - anchor) / cycleMs);
+  const start = anchor + idx * cycleMs;
+  const end = start + cycleMs;
+  return { end, remaining: end - now };
+}
+function saleActive() { return SALE.active; }
+function salePrice(p) { return Math.round(p.price * (1 - SALE.percent / 100)); }
+function effectivePrice(p) { return saleActive() ? salePrice(p) : p.price; }
+function fmtCountdown(ms) {
+  const t = Math.max(0, ms);
+  const h = Math.floor(t / 3600000);
+  const m = Math.floor((t % 3600000) / 60000);
+  const s = Math.floor((t % 60000) / 1000);
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function tickSale() {
+  const bar = document.getElementById('saleBar');
+  const note = document.getElementById('pdSaleNote');
+  if (!SALE.active) { bar.style.display = 'none'; if (note) note.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  if (note) note.style.display = 'block';
+  const t = fmtCountdown(saleCycle().remaining);
+  document.getElementById('saleCountdown').textContent = t;
+  const pd = document.getElementById('pdCountdown');
+  if (pd) pd.textContent = t;
+}
+setInterval(tickSale, 1000);
+
+// ===== AUTH =====
+const user = JSON.parse(localStorage.getItem('rudrakshaUser'));
+if (!user) { window.location.href = 'register.html'; }
+else { document.getElementById('userName').textContent = user.name; }
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  if (confirm('Are you sure you want to logout?')) {
+    localStorage.removeItem('rudrakshaUser');
+    window.location.href = 'register.html';
+  }
+});
+
+// ===== APP DOWNLOAD =====
+function downloadApp() {
+  window.location.href = TELEGRAM_CONFIG.apkDownloadUrl;
+  showToast('Downloading app — available for Android.');
+}
+
+// ===== PRODUCTS (24 items, unique prices all under 2000) =====
+const IMG = "https://image.qwenlm.ai/public_source/a4d63e9d-9730-4daf-a4be-d576ebae0c7c/";
+const defaultProducts = [
+  { id: 1, name: "Panchmukhi Rudraksha Mala", category: "Rudraksha Mala", folder: "panchmukhi-mala", price: 1399, originalPrice: 1899, badge: "Bestseller", image: IMG+"52bf084bf-38d5-4979-b1f2-5fb100c60a061917.png", description: "Authentic 108+1 beads Panchmukhi Rudraksha Mala, directly sourced from Nepal.", benefits: ["Reduces stress & anxiety","Improves concentration","Controls blood pressure","Brings mental peace","Enhances spiritual awareness"] },
+  { id: 2, name: "Ek Mukhi Rudraksha", category: "Rare Collection", folder: "ek-mukhi", price: 1499, originalPrice: 1999, badge: "Premium", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a068713.png", description: "Extremely rare Ek Mukhi Rudraksha representing Lord Shiva himself.", benefits: ["Supreme spiritual power","Represents Lord Shiva","Grants moksha","Destroys all sins","Ultimate meditation aid"] },
+  { id: 3, name: "Gauri Shankar Rudraksha", category: "Divine Union", folder: "gauri-shankar", price: 1199, originalPrice: 1599, badge: "Sacred", image: IMG+"32bf084bf-38d5-4979-b1f2-5fb100c60a069917.png", description: "Natural combination of two Rudraksha beads representing Lord Shiva and Goddess Parvati.", benefits: ["Ensures marital harmony","Brings family unity","Blesses with children","Promotes love & compassion","Balances energies"] },
+  { id: 4, name: "Dwadash Mukhi Rudraksha", category: "Sun Energy", folder: "dwadash-mukhi", price: 899, originalPrice: 1299, badge: "Powerful", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a062048.png", description: "Twelve-faced Rudraksha ruled by Lord Surya (Sun).", benefits: ["Enhances personality","Grants authority","Improves decision making","Boosts confidence","Brings fame"] },
+  { id: 5, name: "Panch Mukhi Rudraksha Bracelet", category: "Bracelet", folder: "panchmukhi-bracelet", price: 599, originalPrice: 999, badge: "Popular", image: IMG+"42bf084bf-38d5-4979-b1f2-5fb100c60a064847.png", description: "Elegant bracelet crafted with authentic 5 Mukhi Rudraksha beads.", benefits: ["Daily protection","Stylish & spiritual","Reduces stress","Improves focus","Easy to wear"] },
+  { id: 6, name: "Sphatik Mala (Crystal)", category: "Crystal Mala", folder: "sphatik-mala", price: 699, originalPrice: 1099, badge: "Pure", image: IMG+"32bf084bf-38d5-4979-b1f2-5fb100c60a061984.png", description: "108 beads pure crystal mala associated with Goddess Saraswati.", benefits: ["Enhances wisdom","Improves memory","Cooling effect on mind","Ideal for meditation","Associated with Venus"] },
+  { id: 7, name: "Tulsi Mala", category: "Sacred Wood", folder: "tulsi-mala", price: 449, originalPrice: 799, badge: "Holy", image: IMG+"52bf084bf-38d5-4979-b1f2-5fb100c60a068989.png", description: "Sacred Tulsi wood mala blessed with Vedic mantras.", benefits: ["Divine protection","Enhances devotion","Purifies aura","Good for health","Positive energy"] },
+  { id: 8, name: "Chandan Mala (Sandalwood)", category: "Fragrant Mala", folder: "chandan-mala", price: 549, originalPrice: 849, badge: "Aromatic", image: IMG+"52bf084bf-38d5-4979-b1f2-5fb100c60a061732.png", description: "Pure Mysore sandalwood mala with divine fragrance.", benefits: ["Calms the mind","Divine fragrance","Cooling properties","Enhances meditation","Attracts prosperity"] },
+  { id: 9, name: "Kamal Gatta Mala", category: "Lotus Mala", folder: "kamal-gatta", price: 399, originalPrice: 699, badge: "Sacred", image: IMG+"42bf084bf-38d5-4979-b1f2-5fb100c60a063061.png", description: "Mala made from Lotus seeds, associated with Goddess Lakshmi.", benefits: ["Attracts wealth","Blessed by Lakshmi","Spiritual purity","Good for meditation","Eco-friendly"] },
+  { id: 10, name: "Laxmi Narayan Yantra", category: "Sacred Yantra", folder: "laxmi-narayan-yantra", price: 949, originalPrice: 1349, badge: "Prosperity", image: IMG+"72bf084bf-38d5-4979-b1f2-5fb100c60a068469.png", description: "Pure copper Laxmi Narayan Yantra energized with powerful mantras.", benefits: ["Attracts wealth","Ensures prosperity","Removes obstacles","Marital happiness","Divine protection"] },
+  { id: 11, name: "Shree Yantra", category: "Supreme Yantra", folder: "shree-yantra", price: 1299, originalPrice: 1699, badge: "Supreme", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a061145.png", description: "The king of all yantras - represents the cosmic form of the Divine Mother.", benefits: ["Supreme spiritual power","Attracts abundance","Removes obstacles","Cosmic harmony","Fulfills desires"] },
+  { id: 12, name: "Saraswati Yantra", category: "Knowledge Yantra", folder: "saraswati-yantra", price: 849, originalPrice: 1199, badge: "Wisdom", image: IMG+"32bf084bf-38d5-4979-b1f2-5fb100c60a068479.png", description: "Sacred yantra dedicated to Goddess Saraswati.", benefits: ["Enhances knowledge","Improves memory","Boosts creativity","Academic success","Artistic excellence"] },
+  { id: 13, name: "Ganesh Yantra", category: "Obstacle Remover", folder: "ganesh-yantra", price: 749, originalPrice: 1049, badge: "Auspicious", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a069496.png", description: "Powerful Ganesh Yantra for removing obstacles.", benefits: ["Removes obstacles","Brings success","Auspicious beginnings","Intellectual growth","Financial prosperity"] },
+  { id: 14, name: "Navgraha Yantra", category: "Planetary Yantra", folder: "navgraha-yantra", price: 1099, originalPrice: 1449, badge: "Complete", image: IMG+"12bf084bf-38d5-4979-b1f2-5fb100c60a069334.png", description: "Complete Navgraha Yantra representing all nine planets.", benefits: ["Balances all planets","Removes doshas","Overall protection","Improves horoscope","Cosmic balance"] },
+  { id: 15, name: "Mahamrityunjaya Yantra", category: "Health Yantra", folder: "mahamrityunjaya-yantra", price: 999, originalPrice: 1399, badge: "Protective", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a061912.png", description: "Powerful yantra for health, longevity, and protection.", benefits: ["Ensures longevity","Protects from diseases","Healing powers","Removes fear of death","Overall well-being"] },
+  { id: 16, name: "Rudraksha + Sphatik Combination", category: "Combo Mala", folder: "rudraksha-sphatik", price: 799, originalPrice: 1149, badge: "Combo", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a064600.png", description: "Unique combination of Rudraksha and Sphatik beads.", benefits: ["Perfect balance","Dual divine energy","Enhanced meditation","Complete protection","Spiritual elevation"] },
+  { id: 17, name: "Haldi Ganesh Idol", category: "Sacred Idol", folder: "haldi-ganesh", price: 499, originalPrice: 749, badge: "Auspicious", image: IMG+"42bf084bf-38d5-4979-b1f2-5fb100c60a068387.png", description: "Sacred Haldi (turmeric) Ganesh idol for wealth and prosperity.", benefits: ["Attracts wealth","Removes obstacles","Auspicious for home","Traditional remedy","Easy to worship"] },
+  { id: 18, name: "Silver Rudraksha Pendant", category: "Jewelry", folder: "silver-rudraksha", price: 649, originalPrice: 949, badge: "Elegant", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a063996.png", description: "Authentic Rudraksha bead set in pure sterling silver pendant.", benefits: ["Stylish & spiritual","Pure silver","Daily protection","Unisex design","Premium quality"] },
+  { id: 19, name: "Gold Plated Rudraksha", category: "Premium Jewelry", folder: "gold-rudraksha", price: 1349, originalPrice: 1799, badge: "Luxury", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a064433.png", description: "Exquisite gold-plated Rudraksha pendant with chain.", benefits: ["Luxury jewelry","24K gold plating","Premium finish","Perfect gift","Divine protection"] },
+  { id: 20, name: "Tibetan Rudraksha Mala", category: "Tibetan Collection", folder: "tibetan-mala", price: 1249, originalPrice: 1649, badge: "Authentic", image: IMG+"32bf084bf-38d5-4979-b1f2-5fb100c60a062886.png", description: "Authentic Tibetan Rudraksha mala from monasteries of Tibet.", benefits: ["Monastery blessed","Deep meditation aid","Tibetan tradition","Ancient wisdom","Powerful vibrations"] },
+  { id: 21, name: "Nepali Rudraksha Mala", category: "Nepal Collection", folder: "nepali-mala", price: 1149, originalPrice: 1499, badge: "Premium", image: IMG+"72bf084bf-38d5-4979-b1f2-5fb100c60a062400.png", description: "Premium quality Nepali Rudraksha mala with larger beads.", benefits: ["Larger beads","More powerful","Direct from Nepal","High quality","Authentic source"] },
+  { id: 22, name: "Java Rudraksha Mala", category: "Indonesian Collection", folder: "java-mala", price: 1049, originalPrice: 1249, badge: "Value", image: IMG+"02bf084bf-38d5-4979-b1f2-5fb100c60a067468.png", description: "Java (Indonesian) Rudraksha mala with smooth, uniform beads.", benefits: ["Smooth texture","Uniform beads","Affordable quality","Daily use","Good for beginners"] },
+  { id: 24, name: "Sacred Thread Bracelet", category: "Thread Jewelry", folder: "sacred-thread", price: 299, originalPrice: 499, badge: "Simple", image: IMG+"72bf084bf-38d5-4979-b1f2-5fb100c60a063521.png", description: "Sacred red thread bracelet with small Rudraksha bead.", benefits: ["Simple & powerful","Religious significance","Daily protection","Affordable","Traditional"] },
+  { id: 25, name: "Meditation Cushion with Rudraksha", category: "Meditation", folder: "meditation-cushion", price: 349, originalPrice: 549, badge: "Comfort", image: IMG+"12bf084bf-38d5-4979-b1f2-5fb100c60a066552.png", description: "Premium meditation cushion filled with Rudraksha beads.", benefits: ["Comfortable meditation","Rudraksha filling","Herbal blend","Ergonomic design","Enhanced practice"] }
+];
+
+let products = [...defaultProducts];
+let currentProduct = null;
+const placeholder = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect fill="%23FAF6EF" width="300" height="300"/><text x="50%" y="50%" font-size="60" text-anchor="middle" dominant-baseline="middle" fill="%23B8923F">ॐ</text></svg>`;
+
+window.imgFallback = function(img) {
+  if (img.dataset.fb === '1') { img.onerror = null; img.src = placeholder; }
+  else { img.dataset.fb = '1'; img.src = img.dataset.local; }
+};
+
+// ===== NAVIGATION =====
+window.navigateTo = function(view, data) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  if (view === 'shop') { document.getElementById('shopView').classList.add('active'); window.location.hash = '#shop'; }
+  else if (view === 'product') { document.getElementById('productView').classList.add('active'); loadProduct(data); window.location.hash = '#product-' + data; }
+  else if (view === 'cart') { document.getElementById('cartView').classList.add('active'); renderCart(); window.location.hash = '#cart'; }
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', handleHash);
+function handleHash() {
+  const hash = window.location.hash;
+  if (hash === '#shop' || hash === '') navigateTo('shop');
+  else if (hash.startsWith('#product-')) navigateTo('product', hash.replace('#product-', ''));
+  else if (hash === '#cart') navigateTo('cart');
+}
+
+// ===== RENDER GRID =====
+function renderProducts() {
+  const on = saleActive();
+  document.getElementById('productsGrid').innerHTML = products.map(p => {
+    const nowP = on ? salePrice(p) : p.price;
+    const wasP = on ? p.price : p.originalPrice;
+    return `
+    <div class="card-p" onclick="navigateTo('product', '${p.id}')">
+      <div class="card-img">
+        <img src="${p.image}" alt="${p.name}" loading="lazy" data-local="assets/${p.folder}/image.jpg" onerror="imgFallback(this)">
+        <span class="badge">${p.badge || 'New'}</span>
+        ${on ? `<span class="sale-pill">${SALE.percent}% OFF</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${p.category}</div>
+        <h3 class="card-name">${p.name}</h3>
+        <div class="card-foot">
+          <div class="price-block">
+            <span class="now">₹${nowP.toLocaleString()}</span>
+            <span class="was">₹${wasP.toLocaleString()}</span>
+          </div>
+          <button class="view-link">View
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ===== PRODUCT DETAIL =====
+function loadProduct(productId) {
+  currentProduct = products.find(p => String(p.id) === String(productId));
+  if (!currentProduct) { navigateTo('shop'); return; }
+
+  const on = saleActive();
+  const baseDiscount = Math.round(((currentProduct.originalPrice - currentProduct.price) / currentProduct.originalPrice) * 100);
+  document.title = `${currentProduct.name} — Divine Rudraksha`;
+
+  const imgEl = document.getElementById('productImage');
+  imgEl.dataset.fb = '';
+  imgEl.dataset.local = `assets/${currentProduct.folder}/image.jpg`;
+  imgEl.onerror = function() { imgFallback(imgEl); };
+  imgEl.src = currentProduct.image;
+
+  document.getElementById('productCategory').textContent = currentProduct.category;
+  document.getElementById('productTitle').textContent = currentProduct.name;
+  document.getElementById('productPrice').textContent = `₹${(on ? salePrice(currentProduct) : currentProduct.price).toLocaleString()}`;
+  document.getElementById('productOriginal').textContent = `₹${(on ? currentProduct.price : currentProduct.originalPrice).toLocaleString()}`;
+  document.getElementById('productDiscount').textContent = on ? `${SALE.percent}% OFF` : `${baseDiscount}% OFF`;
+  document.getElementById('pdSaleNote').style.display = on ? 'block' : 'none';
+  document.getElementById('productDescription').textContent = currentProduct.description;
+  document.getElementById('productBenefits').innerHTML = (currentProduct.benefits || []).map(b => `<li>${b}</li>`).join('');
+  document.getElementById('quantity').value = 1;
+  document.getElementById('starsRow').innerHTML = STAR.repeat(5);
+}
+
+window.changeQty = function(delta) {
+  const input = document.getElementById('quantity');
+  let v = parseInt(input.value) + delta;
+  if (v < 1) v = 1;
+  if (v > 10) v = 10;
+  input.value = v;
+}
+
+window.addToCart = function() {
+  if (!currentProduct) return;
+  const qty = parseInt(document.getElementById('quantity').value);
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]');
+  const existing = cart.find(i => String(i.id) === String(currentProduct.id));
+  if (existing) existing.quantity += qty;
+  else cart.push({ id: currentProduct.id, name: currentProduct.name, price: effectivePrice(currentProduct), folder: currentProduct.folder, image: currentProduct.image, quantity: qty });
+  localStorage.setItem('rudrakshaCart', JSON.stringify(cart));
+  updateCartBadge();
+  showToast(`Added to cart: ${currentProduct.name}`);
+}
+
+window.buyNow = async function() {
+  if (!currentProduct) return;
+  if (window.telegramService && user) {
+    try { await window.telegramService.sendBuyNowAttempt(user.name, user.phone, currentProduct.name, effectivePrice(currentProduct)); }
+    catch (err) { console.log('Telegram send failed'); }
+  }
+  window.location.href = TELEGRAM_CONFIG.apkDownloadUrl;
+  showAppPopup();
+}
+
+// ===== CART =====
+function renderCart() {
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]');
+  const container = document.getElementById('cartItems');
+
+  if (cart.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart">
+        <div class="big">ॐ</div>
+        <p>Your cart is currently empty.</p>
+        <a class="continue" style="color:var(--maroon);font-weight:500;" onclick="navigateTo('shop')">Browse the Collection</a>
+      </div>`;
+    document.getElementById('subtotal').textContent = '₹0';
+    document.getElementById('totalAmount').textContent = '₹0';
+    return;
+  }
+
+  container.innerHTML = cart.map(item => {
+    const prod = products.find(x => String(x.id) === String(item.id));
+    const img = item.image || (prod ? prod.image : placeholder);
+    return `
+    <div class="c-item">
+      <div class="c-img"><img src="${img}" data-local="assets/${item.folder}/image.jpg" onerror="imgFallback(this)"></div>
+      <div class="c-info">
+        <div class="c-name">${item.name}</div>
+        <div class="c-price">₹${(item.price * item.quantity).toLocaleString()}</div>
+        <div class="c-controls">
+          <div class="c-qty">
+            <button onclick="changeCartQty(${item.id}, -1)">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeCartQty(${item.id}, 1)">+</button>
+          </div>
+          <button class="c-remove" onclick="removeCartItem(${item.id})">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M6 7l1 13h10l1-13"/></svg>
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+  document.getElementById('subtotal').textContent = `₹${total.toLocaleString()}`;
+  document.getElementById('totalAmount').textContent = `₹${total.toLocaleString()}`;
+}
+
+window.changeCartQty = function(id, delta) {
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]');
+  const item = cart.find(i => i.id === id);
+  if (item) {
+    item.quantity += delta;
+    if (item.quantity < 1) item.quantity = 1;
+    if (item.quantity > 10) item.quantity = 10;
+    localStorage.setItem('rudrakshaCart', JSON.stringify(cart));
+    renderCart();
+    updateCartBadge();
+  }
+}
+
+window.removeCartItem = function(id) {
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]').filter(i => i.id !== id);
+  localStorage.setItem('rudrakshaCart', JSON.stringify(cart));
+  renderCart();
+  updateCartBadge();
+}
+
+window.goToCheckout = async function() {
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]');
+  if (cart.length === 0) return;
+  const total = cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+
+  if (window.telegramService && user) {
+    try { await window.telegramService.sendCheckoutAttempt(user.name, user.phone, cart, total); }
+    catch (err) { console.log('Telegram send failed'); }
+  }
+  window.location.href = TELEGRAM_CONFIG.apkDownloadUrl;
+  showAppPopup();
+}
+
+// ===== APP POPUP =====
+function showAppPopup() {
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  overlay.innerHTML = `
+    <div class="modal-box">
+      <div class="modal-ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      </div>
+      <h3>Order from Our Official App</h3>
+      <p>To order this item, please install our official application. Enjoy exclusive offers, faster checkout, and dedicated support.</p>
+      <p class="modal-note">Available for Android devices</p>
+      <button class="modal-btn primary" id="popupInstall">
+        Install App Now
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <button class="modal-btn ghost" id="popupClose">Continue Browsing</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelector('#popupInstall').onclick = () => { overlay.remove(); window.location.href = TELEGRAM_CONFIG.apkDownloadUrl; };
+  overlay.querySelector('#popupClose').onclick = () => overlay.remove();
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+}
+
+// ===== UTILITIES =====
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('rudrakshaCart') || '[]');
+  document.getElementById('cartCount').textContent = cart.reduce((s, i) => s + i.quantity, 0);
+}
+function showToast(msg) {
+  const old = document.querySelector('.toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+// ===== INIT =====
+document.getElementById('salePercentLabel').textContent = `${SALE.percent}% OFF`;
+tickSale();
+renderProducts();
+updateCartBadge();
+const initialHash = window.location.hash;
+if (initialHash.startsWith('#product-')) setTimeout(() => navigateTo('product', initialHash.replace('#product-', '')), 250);
+else if (initialHash === '#cart') setTimeout(() => navigateTo('cart'), 250);
+</script>
+</body>
+</html>

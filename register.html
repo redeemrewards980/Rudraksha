@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — Divine Rudraksha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --ink: #1C1917; --maroon: #8C1D2F; --maroon-dark: #6E1524;
+  --gold: #B8923F; --gold-light: #D9C08A; --cream: #FAF6EF; --paper: #FFFFFF;
+  --muted: #78716C; --line: #E9E1D2; --shadow: 0 20px 60px rgba(28,25,23,0.10);
+}
+body { font-family: 'Inter', sans-serif; background: linear-gradient(160deg, #FAF6EF 0%, #F2EADB 60%, #ECE1CC 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; color: var(--ink); }
+.shell { position: relative; width: 100%; max-width: 460px; }
+.orb { position: absolute; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(184,146,63,0.10) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); animation: spin 80s linear infinite; pointer-events: none; }
+@keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+.card { position: relative; z-index: 1; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 52px 44px; box-shadow: var(--shadow); }
+.brand { text-align: center; margin-bottom: 36px; }
+.brand-mark { width: 64px; height: 64px; margin: 0 auto 18px; border: 1px solid var(--gold-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: serif; font-size: 30px; color: var(--gold); }
+.brand h1 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 1px; color: var(--ink); }
+.brand p { color: var(--muted); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+.intro { text-align: center; margin-bottom: 32px; }
+.intro h2 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+.intro p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+.field { margin-bottom: 20px; }
+.field label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: #57534E; margin-bottom: 8px; }
+.field label svg { width: 15px; height: 15px; stroke: var(--gold); }
+.field input { width: 100%; padding: 13px 15px; border: 1px solid var(--line); border-radius: 9px; font-size: 15px; font-family: 'Inter', sans-serif; background: var(--cream); color: var(--ink); transition: border-color .2s, background .2s, box-shadow .2s; }
+.field input:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px rgba(184,146,63,0.14); }
+.hint { font-size: 11px; color: var(--muted); margin-top: 6px; }
+.btn { width: 100%; padding: 15px; background: var(--maroon); color: #fff; border: none; border-radius: 9px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background .2s, transform .15s, box-shadow .2s; }
+.btn svg { width: 16px; height: 16px; stroke: #fff; }
+.btn:hover { background: var(--maroon-dark); box-shadow: 0 8px 24px rgba(140,29,47,0.28); }
+.btn:disabled { opacity: .6; cursor: default; transform: none; box-shadow: none; }
+.divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 20px; color: var(--muted); font-size: 12px; letter-spacing: 1px; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+.app-link { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; transition: border-color .2s, background .2s; background: #fff; }
+.app-link:hover { border-color: var(--gold-light); background: #FBF8F1; }
+.app-icon { width: 42px; height: 42px; flex-shrink: 0; background: #1C1917; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+.app-icon svg { width: 20px; height: 20px; stroke: var(--gold-light); }
+.app-link h4 { font-size: 14px; font-weight: 600; }
+.app-link p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.app-link .os { font-size: 11px; color: var(--gold); font-weight: 600; margin-top: 3px; }
+.trust { text-align: center; margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); }
+.trust p { color: var(--muted); font-size: 12px; letter-spacing: 0.5px; }
+.toast { position: fixed; bottom: 28px; right: 28px; background: var(--ink); color: #fff; padding: 14px 22px; border-radius: 10px; font-size: 14px; box-shadow: 0 12px 32px rgba(0,0,0,0.25); z-index: 999; animation: rise .3s ease; }
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@media (max-width: 560px) { .card { padding: 40px 26px; } .brand h1 { font-size: 26px; } }
+</style>
+<script>
+// Returning client: skip this page entirely (no re-login).
+if (localStorage.getItem('rudrakshaUser')) { location.replace('shop-product-cart.html#shop'); }
+</script>
+</head>
+<body>
+
+<div class="shell">
+  <div class="orb"></div>
+  <div class="card">
+    <div class="brand">
+      <div class="brand-mark">ॐ</div>
+      <h1>Divine Rudraksha</h1>
+      <p>Sacred Beads &bull; Pure Spirituality</p>
+    </div>
+
+    <div class="intro">
+      <h2>Welcome, Seeker</h2>
+      <p>Register once to explore our collection of authentic Rudraksha malas and sacred spiritual treasures.</p>
+    </div>
+
+    <form id="registerForm" novalidate>
+      <div class="field">
+        <label for="customerName">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          Full Name
+        </label>
+        <input type="text" id="customerName" required placeholder="Enter your name" autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="customerPhone">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.5 2.1L8.1 10a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.5c.9.3 1.9.6 2.9.7a2 2 0 011.6 2z"/></svg>
+          Phone Number
+        </label>
+        <input type="tel" id="customerPhone" required maxlength="10" inputmode="numeric" pattern="[0-9]{10}" placeholder="10-digit mobile number" autocomplete="tel">
+        <div class="hint">Exactly 10 digits — numbers only.</div>
+      </div>
+
+      <button type="submit" class="btn" id="registerBtn">
+        <span>Enter Sacred Space</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+
+    <div class="divider">OUR APP</div>
+
+    <div class="app-link" onclick="downloadApp()">
+      <div class="app-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+      </div>
+      <div>
+        <h4>Get the Divine Rudraksha App</h4>
+        <p>Order directly from our official application</p>
+        <p class="os">Available for Android</p>
+      </div>
+    </div>
+
+    <div class="trust">
+      <p>100% Authentic &bull; Mantra Charged &bull; Direct from Source</p>
+    </div>
+  </div>
+</div>
+
+<script src="telegram-config.js"></script>
+<script src="telegram-service.js"></script>
+<script>
+function showToast(msg) {
+  const old = document.querySelector('.toast');
+  if (old) old.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function downloadApp() {
+  window.location.href = TELEGRAM_CONFIG.apkDownloadUrl;
+  showToast('Downloading app — available for Android.');
+}
+
+// HARD LIMIT: only digits, max 10, typed or pasted
+const phoneInput = document.getElementById('customerPhone');
+phoneInput.addEventListener('input', () => {
+  phoneInput.value = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+});
+
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('customerName').value.trim();
+  const phone = phoneInput.value.trim();
+  const btn = document.getElementById('registerBtn');
+
+  if (!name) { showToast('Please enter your name.'); return; }
+  if (phone.length !== 10) { showToast('Phone number must be exactly 10 digits.'); phoneInput.focus(); return; }
+
+  btn.disabled = true;
+  btn.innerHTML = '<span>Registering…</span>';
+
+  // Remember the client permanently (no re-login on next visit)
+  localStorage.setItem('rudrakshaUser', JSON.stringify({ name, phone, registeredAt: new Date().toISOString() }));
+
+  // Notify admin on Telegram (plain text + keepalive = reliable)
+  let sent = false;
+  if (window.telegramService) {
+    sent = await window.telegramService.sendClientRegistration(name, phone);
+  }
+  if (!sent) console.warn('Telegram notification failed for', name, phone);
+
+  btn.innerHTML = '<span>Account Created</span>';
+  showToast(`Welcome, ${name}.`);
+  setTimeout(() => location.replace('shop-product-cart.html#shop'), 700);
+});
+</script>
+</body>
+</html>

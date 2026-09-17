@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Rudraksha</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #FAF6EF; color: #1C1917; }
+.wrap { text-align: center; }
+.mark { font-size: 48px; color: #B8923F; font-family: serif; margin-bottom: 18px; }
+h1 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; letter-spacing: 1px; }
+p { color: #78716C; margin-top: 10px; font-size: 14px; }
+a { color: #8C1D2F; text-decoration: none; font-weight: 500; }
+</style>
+<script>
+// Returning client goes straight to the shop; new client goes to register.
+(function () {
+  var u = localStorage.getItem('rudrakshaUser');
+  location.replace(u ? 'shop-product-cart.html#shop' : 'register.html');
+})();
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="mark">ॐ</div>
+  <h1>Divine Rudraksha</h1>
+  <p>Redirecting… <a href="register.html">Continue</a></p>
+</div>
+</body>
+</html>
